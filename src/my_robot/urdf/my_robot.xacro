@@ -4,6 +4,8 @@
 
   <link name="robot_footprint"></link>
 
+  <xacro:include filename="$(find my_robot)/urdf/my_robot.gazebo" />
+
   <joint name="robot_footprint_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="robot_footprint"/>
@@ -178,12 +180,11 @@
 
   <joint name='camera_joint' type='fixed'>
     <origin xyz="0.2 0 0" rpy="0 0 0"/>
-    <parent link="chasis"/>
+    <parent link="chassis"/>
     <child link="camera"/>
     <axis xyz="0 1 0" />
   </joint>
  
-<!--
  <link name='hokuyo'>
     <visual name='hokuyo_visual'>
      <geometry>
@@ -206,11 +207,29 @@
 
  <joint name="hokuyo_joint" type="fixed">
   <origin xyz="0.15 0 0.1" rpy="0 0 0"/>
-  <parent link="chasis"/>
+  <parent link="chassis"/>
   <child link="hokuyo"/>
   <axis xyz="0 1 0" rpy="0 0 0"/>
  </joint>
--->
+
+  <gazebo reference ="left_wheel">
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+   <gazebo reference ="right_wheel">
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+   <gazebo reference ="robot_footprint">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference ="chassis">
+    <material>Gazebo/Blue</material>
+  </gazebo>
  
+  <gazebo reference ="camera">
+    <material>Gazebo/Red</material>
+  </gazebo>
    
 </robot>
